@@ -1,2 +1,2 @@
 # Tatame-Hub
-Ficha de cadstro para alunos do projeto Tatame Neurodiverso
+Ficha de cadastro para alunos do projeto Tatame Neurodiverso
