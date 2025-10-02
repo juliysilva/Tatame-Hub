@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cadastro • Projeto Tatame</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0D1117; --card:#161B22; --txt:#E6EDF3; --muted:#8B949E;
+      --primary:#2F81F7; --border:#30363D; --danger:#EF4444; --focus:#7AA7FF;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--txt)}
+    .topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border);background:#0f1319;position:sticky;top:0;z-index:10}
+    .brand{display:flex;gap:14px;align-items:center}
+    .nd{width:56px;height:28px;flex:0 0 auto}
+    h1{font-size:18px;margin:0;font-weight:800}
+    .subtitle{margin:2px 0 0;color:var(--muted);font-size:12px}
+    .container{max-width:1100px;margin:24px auto;padding:0 16px;display:grid;gap:20px}
+    .panel{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 16px}
+    h2{margin:0 0 12px;font-size:18px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:13px}
+    input,select,textarea{background:#0f1319;border:1px solid var(--border);color:var(--txt);border-radius:10px;padding:10px 12px;font-size:14px}
+    input:focus,select:focus,textarea:focus{outline:2px solid var(--focus);outline-offset:2px}
+    .fieldset{border:1px dashed var(--border);border-radius:12px;padding:12px;margin-top:8px}
+    .fieldset legend{padding:0 6px;color:var(--muted)}
+    .checks{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
+    .check{font-weight:500}
+    .form-actions{display:flex;gap:8px;margin-top:12px}
+    .btn{background:#22272e;border:1px solid var(--border);color:var(--txt);padding:10px 14px;border-radius:10px;font-weight:600}
+    .primary{background:var(--primary);border-color:transparent;color:#fff}
+    .ghost{background:transparent}
+    .danger{background:var(--danger);border-color:transparent;color:#fff}
+    .hint{color:var(--muted);font-size:12px;margin-top:6px}
+    .table-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px}
+    table{width:100%;border-collapse:separate;border-spacing:0}
+    th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;font-size:14px}
+    th{background:#0f1319}
+    .footer{padding:18px;color:var(--muted);text-align:center}
+    @media print{
+      .topbar,.form-actions .ghost{display:none}
+      body{background:#fff;color:#000}
+      .panel{border-color:#ddd}
+      input,select,textarea{border-color:#bbb}
+    }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <!-- Símbolo da Neurodiversidade (infinito arco-íris) -->
+    <svg class="nd" viewBox="0 0 200 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="ndg" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#E40303"/>
+          <stop offset="16.6%" stop-color="#FF8C00"/>
+          <stop offset="33.3%" stop-color="#FFED00"/>
+          <stop offset="50%" stop-color="#008026"/>
+          <stop offset="66.6%" stop-color="#004DFF"/>
+          <stop offset="83.3%" stop-color="#750787"/>
+          <stop offset="100%" stop-color="#000000"/>
+        </linearGradient>
+      </defs>
+      <path d="M25,50c0,-20 20,-30 35,-30c25,0 35,60 65,60c15,0 35,-10 35,-30c0,-20 -20,-30 -35,-30c-30,0 -40,60 -65,60c-15,0 -35,-10 -35,-30Z" fill="url(#ndg)"/>
+    </svg>
+    <div>
+      <h1>Projeto Tatame · Tatame Hub</h1>
+      <p class="subtitle">Cadastro de Alunos • “Capacidades diferentes. Possibilidades infinitas.”</p>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="panel">
+    <h2>Dados do aluno</h2>
+    <!-- HTML puro. Sem JavaScript. Use Impressão para salvar em PDF. -->
+    <form action="#" method="post">
+      <div class="grid">
+        <label>Nome completo*
+          <input required name="nome" type="text" placeholder="Ex.: Ana Souza">
+        </label>
+        <label>Nome social
+          <input name="nomeSocial" type="text" placeholder="Opcional">
+        </label>
+        <label>Data de nascimento*
+          <input required name="nascimento" type="date">
+        </label>
+        <label>CPF
+          <input name="cpf" type="text" inputmode="numeric" maxlength="14" pattern="^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$" placeholder="000.000.000-00">
+        </label>
+        <label>RG
+          <input name="rg" type="text" placeholder="RG">
+        </label>
+        <label>Gênero
+          <select name="genero">
+            <option value="">Selecione</option>
+            <option>Feminino</option>
+            <option>Masculino</option>
+            <option>Não binário</option>
+            <option>Outro</option>
+            <option>Prefere não dizer</option>
+          </select>
+        </label>
+        <label>Responsável legal
+          <input name="responsavel" type="text" placeholder="Se menor de idade">
+        </label>
+        <label>Telefone/WhatsApp*
+          <input required name="telefone" type="tel" placeholder="(21) 99999-9999" pattern="^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$">
+        </label>
+        <label>E-mail
+          <input name="email" type="email" placeholder="email@exemplo.com">
+        </label>
+        <label>Endereço
+          <input name="endereco" type="text" placeholder="Rua, número, complemento">
+        </label>
+        <label>Bairro
+          <input name="bairro" type="text">
+        </label>
+        <label>CEP
+          <input name="cep" type="text" inputmode="numeric" maxlength="9" pattern="^\d{5}-?\d{3}$" placeholder="00000-000">
+        </label>
+        <label>Escola
+          <input name="escola" type="text">
+        </label>
+        <label>Série/Turma
+          <input name="serie" type="text">
+        </label>
+      </div>
+
+      <fieldset class="fieldset">
+        <legend>Informações de saúde e inclusão</legend>
+        <div class="grid">
+          <label>Neurodivergência
+            <select name="neurodiv" multiple size="5" aria-label="Selecione uma ou mais">
+              <option>Autismo (TEA)</option>
+              <option>TDAH</option>
+              <option>Dislexia</option>
+              <option>Dispraxia</option>
+              <option>Transtorno Dissociativo</option>
+              <option>Outra</option>
+            </select>
+          </label>
+          <label>Descreva laudos ou necessidades
+            <textarea name="laudos" rows="4" placeholder="Recursos, apoios, laudos, adaptações necessárias"></textarea>
+          </label>
+          <label>Alergias
+            <input name="alergias" type="text" placeholder="Ex.: penicilina, látex">
+          </label>
+          <label>Medicações em uso
+            <input name="medicacoes" type="text" placeholder="Nome e horários">
+          </label>
+          <label>Contato de emergência*
+            <input required name="emergencia" type="text" placeholder="Nome e telefone">
+          </label>
+        </div>
+        <div class="checks">
+          <label class="check">
+            <input type="checkbox" name="autorizoImagem"> Autorizo uso de imagem para fins institucionais
+          </label>
+          <label class="check">
+            <input type="checkbox" name="pcd"> Pessoa com deficiência (PCD)
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Enviar</button>
+        <button type="reset" class="btn ghost">Limpar</button>
+        <button type="button" class="btn" onclick="window.print()">Imprimir</button>
+      </div>
+
+      <p class="hint">HTML puro não armazena dados. Use “Imprimir” para salvar em PDF ou conecte este formulário a um backend quando desejar.</p>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Listagem (modelo para impressão)</h2>
+    <div class="table-wrap">
+      <table aria-describedby="Tabela para checagem visual antes de imprimir">
+        <thead>
+          <tr>
+            <th>Nome</th><th>Nasc.</th><th>Responsável</th><th>Contato</th><th>Bairro</th><th>Neurodiv.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="6" style="color:var(--muted)">Sem JavaScript, a listagem dinâmica não é possível. Use o PDF impresso ou conecte a um servidor.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <small>Projeto Tatame • Tatame Hub • Maricá-RJ</small>
+</footer>
+</body>
+</html>
